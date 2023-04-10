@@ -1,0 +1,20 @@
+body{
+    padding: 100px;
+}
+
+.submit-area{
+    /* margin: 10px; */
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px gray;
+}
+/* .form-group,.btn,.text-login{
+    margin-top: 10px;
+} */
+.text-login{
+    margin-left: 10px;
+}
+
+.btn{
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
