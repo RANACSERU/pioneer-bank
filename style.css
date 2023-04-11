@@ -18,3 +18,28 @@ body{
     margin-bottom: 10px;
     margin-left: 10px;
 }
+
+#transaction-area{
+    display: none;
+}
+
+.deposit{
+
+    background-color: slateblue;
+}
+.withdraw{
+    background-color: lightsalmon;
+}
+.balance{
+    background-color: orange;
+}
+.setmargin{
+    margin: 0px 20px;
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+/* .set-shadow{
+    box-shadow: 5px 5px 10px gray;
+} */

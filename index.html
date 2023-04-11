@@ -10,7 +10,7 @@
 </head>
 <body>
     
-    <div class="login-area">
+    <div id="login-area">
         <h1 class=" bg-primary text-white text-center">Welcome to Pioneer Bank</h1>
         <div class="submit-area">
             <h4 class="text-login">Login</h4>
@@ -26,10 +26,128 @@
                   </div><br>
                 </div>
                 
-                <button type="button" class="btn btn-success">Enter</button>
+                <button type="button" id="login" class="btn btn-success">Enter</button>
               </form>
         </div>
     </div>
-    
+    <div id="transaction-area">
+      <h1>Transaction Area</h1>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="deposit setmargin">
+            <h5>Deposit</h5>
+            <h2>$<span id='currenDepositAmount'>00</span></h2>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="withdraw setmargin">
+            <h5>Withdraw</h5>
+            <h2>$<span id="currentWithdrawAmount">00</span></h2>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="balance setmargin">
+            <h5>Balance</h5>
+            <h2>$<span id="currentBalanceAmount">00</span></h2>
+          </div>
+        </div>
+      </div>
+      <div class="row ">
+        <div class="col-md-6 p-10">
+          <div class="submit-area setmargin ">
+            <h4 class="text-success">Deposit</h4>
+            <input id="depositAmount" type="text" class="form-control" placeholder="$ amount you want to deposit"><br>
+            <button id="deposit" class="btn btn-success">Deposit</button>
+          </div>
+        </div>
+        <div class="col-md-6 m-10">
+          <div class="submit-area setmargin">
+            <h4 class="text-success">Withdraw</h4>
+            <input id="withdrawAmount" type="text" class="form-control" placeholder="$ amount you want to withdraw"><br>
+            <button id="withdraw" class="btn btn-success">Withdraw</button>
+          </div>
+        </div>
+      </div>
+     
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+     <script>
+      //Login button event handler
+      const loginButton = document.getElementById('login');
+      loginButton.addEventListener('click', function(){
+        // console.log('Someone click me ');
+        const loginArea = document.getElementById('login-area');
+        loginArea.style.display = 'none';
+
+        const transactionArea = document.getElementById('transaction-area');
+        transactionArea.style.display = 'block';
+      })
+
+
+      ////////////////////////////////deposit button event handler
+
+      const depositButton = document.getElementById('deposit');
+      depositButton.addEventListener('click', function(){
+        // console.log("clicked me");
+        const depositAmount = document.getElementById('depositAmount').value
+          const depositNumber = parseFloat(depositAmount);
+          // console.log(depositNumber);
+          const currenDepositAmount = document.getElementById('currenDepositAmount').innerText;
+          const currenDepositNumber = parseFloat(currenDepositAmount);
+          // console.log(currenDepositNumber);
+          
+          const totalDepositAmount = depositNumber + currenDepositNumber;
+          // console.log(totalDepositAmount);
+          document.getElementById('currenDepositAmount').innerText = totalDepositAmount;
+
+
+          const currentBalanceAmount = document.getElementById('currentBalanceAmount').innerText;
+          const currentBalanceNumber = parseFloat(currentBalanceAmount);
+          const availBalanceAmount = depositNumber + currentBalanceNumber;
+          document.getElementById('currentBalanceAmount').innerText = availBalanceAmount;
+
+
+          //After clicked clear Deposit Value 
+          const clearDepositValue = document.getElementById('depositAmount');
+          clearDepositValue.value = '';         
+              
+
+      })
+
+      ////////////////////////////////withdraw button event handler
+      const withdrawButton = document.getElementById('withdraw');
+      withdrawButton.addEventListener('click', function(){
+        // console.log("clicked me");
+        const withdrawAmount = document.getElementById('withdrawAmount').value
+          const withdrawNumber = parseFloat(withdrawAmount);
+          // console.log(depositNumber);
+          const currentWithdrawAmount = document.getElementById('currentWithdrawAmount').innerText;
+          const currentWithdrawNumber = parseFloat(currentWithdrawAmount);
+          // console.log(currenDepositNumber);
+          
+          const totalWithdrawAmount = withdrawNumber + currentWithdrawNumber;
+          document.getElementById('currentWithdrawAmount').innerText = totalWithdrawAmount;
+          document.getElementById('withdrawAmount').value = '';
+
+
+          const currentBalanceAmount = document.getElementById('currentBalanceAmount').innerText;
+          const currentBalanceNumber = parseFloat(currentBalanceAmount);
+          const availBalanceAmount = currentBalanceNumber - withdrawNumber;
+          document.getElementById('currentBalanceAmount').innerText = availBalanceAmount;
+      })
+
+
+
+     </script>
 </body>
 </html>
